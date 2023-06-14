@@ -1,4 +1,7 @@
-﻿using MySqlConnector;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using MySqlConnector;
+
 
 namespace BrawlbotsMVC.Models
 {
@@ -18,7 +21,6 @@ namespace BrawlbotsMVC.Models
         public int loss_count { get; set; }
 
         public bool Deleted { get; set; }
-
 
 
         public List<RobotData> FetchAll()
@@ -55,6 +57,43 @@ namespace BrawlbotsMVC.Models
             return returnList;
         }
 
+
+        public RobotData FetchSingleRobot(int id)
+        {
+
+            RobotData robot = new RobotData();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                string sqlQuery = "SELECT `id`,`name`,`weapon`,`type_of_movement`,`weight_class`,`team_name` FROM robots WHERE Deleted  =  0 AND id = " + id;
+                MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+               
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                       
+                        robot.id = reader.GetInt32(0);
+                        robot.name = reader.GetString(1);
+                        robot.Weapon = reader.GetString(2);
+                        robot.type_of_movement = reader.GetString(3);
+                        robot.weight_class = reader.GetString(4);
+                        robot.team_name = reader.GetString(5);
+
+                        
+                    }
+                }
+                return robot;
+            }
+
+            
+        }
+
         public int CreateRobot(RobotData CreateRobot)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -65,21 +104,26 @@ namespace BrawlbotsMVC.Models
                 string type_of_movement = CreateRobot.type_of_movement;
                 string weight_class = CreateRobot.weight_class;
                 string team_name = CreateRobot.team_name;
-                int win_count = CreateRobot.win_count;
-                int loss_count = CreateRobot.loss_count;
+                int id = CreateRobot.id;
+                string sqlQuery = "";
 
 
+                     sqlQuery = "INSERT INTO robots (`name`,Weapon,type_of_movement,weight_class,team_name) values(  '" + name + "','" + Weapon + "','" + type_of_movement + "','" + weight_class + "','" + team_name + "')";
+
+                  
+                
+
+                     //sqlQuery = "update  robots set name = @name, Weapon = @Weapon,type_of_movement = @type_of_movement, weight_class = @weight_class,team_name = @team_name where  id = " + id;
+                
 
 
-
-                string sqlQuery = "INSERT INTO robots (`name`,Weapon,type_of_movement,weight_class,team_name,win_count,loss_count) values(  '" + name + "','" + Weapon + "','" + type_of_movement + "','" + weight_class + "','" + team_name + "','" + win_count + "','" + loss_count + "')";
                 MySqlCommand command = new MySqlCommand(sqlQuery, connection);
-
-
-
+             
                 connection.Open();
                 int newID = command.ExecuteNonQuery();
                 return newID;
+
+
             }
 
         }
@@ -96,7 +140,6 @@ namespace BrawlbotsMVC.Models
                     int newID = command.ExecuteNonQuery();
                     if (newID > 0)
                     {
-
                         return true;
                     }
                     else
@@ -108,6 +151,27 @@ namespace BrawlbotsMVC.Models
                 }
 
             }
-        
+
+        //public bool Update(RobotData robot) 
+        //{
+        //    string name = CreateRobot.name;
+        //    string Weapon = CreateRobot.Weapon;
+        //    string type_of_movement = CreateRobot.type_of_movement;
+        //    string weight_class = CreateRobot.weight_class;
+        //    string team_name = CreateRobot.team_name;
+        //    int id = CreateRobot.id;
+        //    string sqlQuery = "";
+
+
+        //    //sqlQuery = "update  robots set name = @name, Weapon = @Weapon,type_of_movement = @type_of_movement, weight_class = @weight_class,team_name = @team_name where  id = " + id;
+
+
+
+        //    MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        //    connection.Open();
+        //    int newID = command.ExecuteNonQuery();
+        //    return newID;
+        //}
     }
 }

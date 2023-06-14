@@ -1,21 +1,21 @@
 ﻿@model BrawlbotsMVC.Models.RobotData
 
-
 @{
-    ViewData["Title"] = "addRobot";
+    ViewData["Title"] = "editRobot";
 }
 
+<h1>editRobot</h1>
 
-
-<h1>Robot toevoegen</h1>
+<h4>RobotData</h4>
 <hr />
 <div class="row">
 
     <div class="col-md-4">
-        <a asp-action="Robot" class="btn btn-primary wd-40 mb-1">Terug</a>
-        <form asp-action="ProcessCreate">
+        <a asp-action="Robot" class="btn btn-primary w-40 mb-1">Terug</a>
+        <form method="post" asp-action="CreateEditForm" asp-controller="Robot">
+            <input type="hidden" asp-for="id" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
+          
             <div class="form-group">
                 <label asp-for="name" class="control-label"></label>
                 <input asp-for="name" class="form-control" />
@@ -41,15 +41,17 @@
                 <input asp-for="team_name" class="form-control" />
                 <span asp-validation-for="team_name" class="text-danger"></span>
             </div>
+          
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
-           
         </form>
     </div>
-
 </div>
 
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

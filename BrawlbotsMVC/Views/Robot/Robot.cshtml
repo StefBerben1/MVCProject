@@ -4,7 +4,7 @@
     ViewData["Title"] = "Robot toevoegen";
 }
 
-<h1>View</h1>
+<h1>Robot overzicht</h1>
 
 <p>
     <a asp-action="CreateRobotForm" asp-controller="Robot" class="btn btn-sm btn-primary" >Toevoegen</a>
@@ -67,13 +67,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.loss_count)
             </td>
-            
                 <td><form asp-action="delete" asp-asp-controller="Robot" asp-route-id="@item.id"><button type="submit" class="btn btn-sm btn-danger ">Delete</button></form></td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.id  }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.id  }) |
-               
-            </td>
+                <td><form asp-action="CreateEditForm" asp-asp-controller="Robot" asp-route-id="@item.id"><button type="submit" class="btn btn-sm btn-primary ">Edit</button></form></td>
         </tr>
 }
     </tbody>

@@ -254,3 +254,14 @@ C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\obj\Debug\net7.0\refint\Braw
 C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\obj\Debug\net7.0\BrawlbotsMVC.pdb
 C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\obj\Debug\net7.0\BrawlbotsMVC.genruntimeconfig.cache
 C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\obj\Debug\net7.0\ref\BrawlbotsMVC.dll
+C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\bin\Debug\net7.0\Google.Protobuf.dll
+C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\bin\Debug\net7.0\K4os.Compression.LZ4.dll
+C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\bin\Debug\net7.0\K4os.Compression.LZ4.Streams.dll
+C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\bin\Debug\net7.0\K4os.Hash.xxHash.dll
+C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\bin\Debug\net7.0\MySql.Data.dll
+C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\bin\Debug\net7.0\BouncyCastle.Crypto.dll
+C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\bin\Debug\net7.0\runtimes\win-x64\native\comerr64.dll
+C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\bin\Debug\net7.0\runtimes\win-x64\native\gssapi64.dll
+C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\bin\Debug\net7.0\runtimes\win-x64\native\k5sprt64.dll
+C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\bin\Debug\net7.0\runtimes\win-x64\native\krb5_64.dll
+C:\laragon\www\BrawlbotsMVC\MVCProject\BrawlbotsMVC\bin\Debug\net7.0\runtimes\win-x64\native\krbcc64.dll

@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9ib3RcYWRkUm9ib3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/laragon/www/BrawlbotsMVC/MVCProject/BrawlbotsMVC/Views/Robot/editRobot.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9ib3RcZWRpdFJvYm90LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/laragon/www/BrawlbotsMVC/MVCProject/BrawlbotsMVC/Views/Robot/Robot.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9ib3RcUm9ib3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
