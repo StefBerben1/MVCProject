@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BrawlbotsMVC.Models.WedstrijdenData>
+
+@{
+    ViewData["Title"] = "Wedstrijden";
+}
+
+<h1>Wedstrijden</h1>
+
+<p>
+    <a asp-action="CreateWedstrijdForm" asp-controller="Wedstrijden" class="btn btn-sm btn-primary">Toevoegen</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.arena_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.match_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.winner_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.loser_id)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.arena_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.match_date)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.winner_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.loser_id)
+                </td>
+           
+            <td>
+                <td><form asp-action="delete" asp-asp-controller="Wedstrijden" asp-route-id="@item.id"><button type="submit" class="btn btn-sm btn-danger ">Delete</button></form></td>
+                <td><form asp-action="CreateEditForm" asp-asp-controller="Robot" asp-route-id="@item.id"><button type="submit" class="btn btn-sm btn-primary ">Edit</button></form></td>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

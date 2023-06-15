@@ -58,7 +58,7 @@ namespace BrawlbotsMVC.Models
         }
 
 
-        public RobotData FetchSingleRobot(int id)
+        public RobotData FetchSingleRobot(int id )
         {
 
             RobotData robot = new RobotData();
@@ -77,7 +77,9 @@ namespace BrawlbotsMVC.Models
                 {
                     while (reader.Read())
                     {
-                       
+
+
+
                         robot.id = reader.GetInt32(0);
                         robot.name = reader.GetString(1);
                         robot.Weapon = reader.GetString(2);

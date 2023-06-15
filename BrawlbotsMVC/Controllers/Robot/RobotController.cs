@@ -26,13 +26,12 @@ namespace BrawlbotsMVC.Controllers.Robot
             return View("addRobot");
         }
 
-        public IActionResult CreateEditForm(int id)
+        public IActionResult CreateEditForm(int id )
         {
-
+ 
             RobotData robot = new RobotData();
-
-            robot.FetchSingleRobot(id);
-            return View("editRobot", robot);
+            RobotData opgehaaldeRobot = robot.FetchSingleRobot(id);
+            return View("editRobot", opgehaaldeRobot);
         }
 
         public IActionResult ProcessCreate(RobotData CreateRobot)
@@ -54,13 +53,16 @@ namespace BrawlbotsMVC.Controllers.Robot
             return RedirectToAction("Robot");
         }
 
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            RobotData robot = new RobotData();
-            robot.FetchSingleRobot(id);
-            return View(robot);
-        }
+
+
+
+        //[HttpGet]
+        //public IActionResult Edit(int id)
+        //{
+        //    RobotData robot = new RobotData();
+        //    robot.FetchSingleRobot(id);
+        //    return View(robot);
+        //}
 
         //[HttpPost]
         //public IActionResult Edit(RobotData robot)

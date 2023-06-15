@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BrawlbotsMVC.Models.WedstrijdenData>
+
+@{
+    ViewData["Title"] = "FetchLeaderbord";
+}
+
+<h1>FetchLeaderbord</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.arena_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.match_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.winner_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.loser_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.win_count)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.loss_count)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.arena_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.match_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.winner_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loser_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.win_count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loss_count)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>
