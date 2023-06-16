@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Elfie.Diagnostics;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MySqlConnector;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 
 namespace BrawlbotsMVC.Models
@@ -77,23 +80,16 @@ namespace BrawlbotsMVC.Models
                 {
                     while (reader.Read())
                     {
-
-
-
                         robot.id = reader.GetInt32(0);
                         robot.name = reader.GetString(1);
                         robot.Weapon = reader.GetString(2);
                         robot.type_of_movement = reader.GetString(3);
                         robot.weight_class = reader.GetString(4);
                         robot.team_name = reader.GetString(5);
-
-                        
                     }
                 }
                 return robot;
-            }
-
-            
+            }  
         }
 
         public int CreateRobot(RobotData CreateRobot)
@@ -109,14 +105,7 @@ namespace BrawlbotsMVC.Models
                 int id = CreateRobot.id;
                 string sqlQuery = "";
 
-
-                     sqlQuery = "INSERT INTO robots (`name`,Weapon,type_of_movement,weight_class,team_name) values(  '" + name + "','" + Weapon + "','" + type_of_movement + "','" + weight_class + "','" + team_name + "')";
-
-                  
-                
-
-                     //sqlQuery = "update  robots set name = @name, Weapon = @Weapon,type_of_movement = @type_of_movement, weight_class = @weight_class,team_name = @team_name where  id = " + id;
-                
+                sqlQuery = "INSERT INTO robots (`name`,Weapon,type_of_movement,weight_class,team_name) values(  '" + name + "','" + Weapon + "','" + type_of_movement + "','" + weight_class + "','" + team_name + "')";
 
 
                 MySqlCommand command = new MySqlCommand(sqlQuery, connection);
@@ -124,8 +113,6 @@ namespace BrawlbotsMVC.Models
                 connection.Open();
                 int newID = command.ExecuteNonQuery();
                 return newID;
-
-
             }
 
         }
@@ -154,26 +141,24 @@ namespace BrawlbotsMVC.Models
 
             }
 
-        //public bool Update(RobotData robot) 
-        //{
-        //    string name = CreateRobot.name;
-        //    string Weapon = CreateRobot.Weapon;
-        //    string type_of_movement = CreateRobot.type_of_movement;
-        //    string weight_class = CreateRobot.weight_class;
-        //    string team_name = CreateRobot.team_name;
-        //    int id = CreateRobot.id;
-        //    string sqlQuery = "";
-
-
-        //    //sqlQuery = "update  robots set name = @name, Weapon = @Weapon,type_of_movement = @type_of_movement, weight_class = @weight_class,team_name = @team_name where  id = " + id;
-
-
-
-        //    MySqlCommand command = new MySqlCommand(sqlQuery, connection);
-
-        //    connection.Open();
-        //    int newID = command.ExecuteNonQuery();
-        //    return newID;
-        //}
+        public int UpdateRobotData()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+               
+                string sqlQuery = "UPDATE robots set name  = @name, Weapon =   @Weapon, type_of_movement  =  @type_of_movement, weight_class  = @weight_class, team_name = @team_name  WHERE  id  = " + id;
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@name", name);
+                    command.Parameters.AddWithValue("@weapon", Weapon);
+                    command.Parameters.AddWithValue("@type_of_movement", type_of_movement);
+                    command.Parameters.AddWithValue("@weight_class", weight_class);
+                    command.Parameters.AddWithValue("@team_name", team_name);
+                    int newID = command.ExecuteNonQuery();
+                    return newID;
+                }
+            }
+        }
     }
 }

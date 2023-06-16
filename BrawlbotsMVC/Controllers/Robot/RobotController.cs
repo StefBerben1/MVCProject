@@ -54,24 +54,20 @@ namespace BrawlbotsMVC.Controllers.Robot
         }
 
 
+        [HttpPost]
+        public IActionResult RetrieveFormData()
+        {
+            RobotData formdata = new RobotData();
+            formdata.id  = Convert.ToInt32(HttpContext.Request.Form["id"]);
+            formdata.name = HttpContext.Request.Form["name"].ToString();
+            formdata.Weapon = HttpContext.Request.Form["Weapon"].ToString();
+            formdata.type_of_movement = HttpContext.Request.Form["type_of_movement"].ToString();
+            formdata.weight_class = HttpContext.Request.Form["weight_class"].ToString();
+            formdata.team_name = HttpContext.Request.Form["team_name"].ToString();
 
+            int result = formdata.UpdateRobotData();
 
-
-        //[HttpGet]
-        //public IActionResult Edit(int id)
-        //{
-        //    RobotData robot = new RobotData();
-        //    robot.FetchSingleRobot(id);
-        //    return View(robot);
-        //}
-
-        //[HttpPost]
-        //public IActionResult Edit(RobotData robot)
-        //{
-        //    RobotData robot = new RobotData();
-        //    robot.FetchSingleRobot(id);
-        //    return View(robot);
-        //}
-
+            return RedirectToAction("Robot");
+        }
     }
 }

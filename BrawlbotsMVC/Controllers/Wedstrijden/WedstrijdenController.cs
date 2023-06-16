@@ -50,5 +50,26 @@ namespace BrawlbotsMVC.Controllers.Wedstrijden
             returnList = leaderbord.FetchLeaderbord();
             return View(returnList);
         }
+
+        public IActionResult CreateEditForm(int id)
+        {
+
+            WedstrijdenData wedstrijdForm = new WedstrijdenData();
+            WedstrijdenData opgehaaldeMatch = wedstrijdForm.FetchSingleMatch(id);
+            return View("editMatch", opgehaaldeMatch);
+        }
+
+        [HttpPost]
+        public IActionResult RetrieveMatchFormData()
+        {
+            WedstrijdenData formdata = new WedstrijdenData();
+            formdata.id = Convert.ToInt32(HttpContext.Request.Form["id"]);
+            formdata.arena_name = HttpContext.Request.Form["arena_name"].ToString();
+            formdata.match_date = Convert.ToDateTime(HttpContext.Request.Form["match_date"]);
+           
+            int result = formdata.UpdateMatchData();
+
+            return RedirectToAction("FetchMatches");
+        }
     }
 }

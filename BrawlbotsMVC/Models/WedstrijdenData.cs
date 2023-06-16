@@ -63,6 +63,31 @@ namespace BrawlbotsMVC.Models
             
         }
 
+             public WedstrijdenData FetchSingleMatch(int id)
+        {
+
+            WedstrijdenData wedstrijdForm = new WedstrijdenData();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string sqlQuery = "SELECT `arena_name`,`match_date` FROM matches WHERE Deleted = 0 AND id = " + id;
+                MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        wedstrijdForm.arena_name = reader.GetString(0);
+                        wedstrijdForm.match_date = reader.GetDateTime(1);
+                    }
+                }
+                return wedstrijdForm;
+            }
+        }
+
 
         public int CreateMatch(WedstrijdenData wedstrijden)
         {
@@ -204,6 +229,28 @@ namespace BrawlbotsMVC.Models
             return returnList;
 
         }
+
+        public int UpdateMatchData()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string match_dateConverted = match_date.ToString("yyyy-MM-dd HH:mm:ss");
+                string sqlQuery = "UPDATE matches set arena_name  = @arena_name, match_date = @match_date  WHERE  id = " + id;
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                {
+
+                  
+                    command.Parameters.AddWithValue("@arena_name", arena_name);
+                    command.Parameters.AddWithValue("@match_date", match_dateConverted);
+           
+                    int newID = command.ExecuteNonQuery();
+                    return newID;
+                }
+            }
+        }
+
+
     }
 
 
