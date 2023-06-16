@@ -42,13 +42,13 @@ namespace BrawlbotsMVC.Controllers.Wedstrijden
             return RedirectToAction("FetchMatches");
         }
 
-        public IActionResult FetchLeaderbords()
+        public IActionResult FetchLeaderbord()
         {
             List<WedstrijdenData> returnList = new List<WedstrijdenData>();
             WedstrijdenData leaderbord = new WedstrijdenData();
 
             returnList = leaderbord.FetchLeaderbord();
-            return View("returnList");
+            return View(returnList);
         }
     }
 }

@@ -10,8 +10,8 @@
 <div class="row">
 
     <div class="col-md-4">
-        <a asp-action="Robot" class="btn btn-primary w-40 mb-1">Terug</a>
-        <form method="post" asp-action="CreateEditForm" asp-controller="Robot">
+        <a asp-action="Robot" asp-action="CreateEditForm" class="btn btn-primary w-40 mb-1">Terug</a>
+        <form method="post">
             <input type="hidden" asp-for="id" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
           

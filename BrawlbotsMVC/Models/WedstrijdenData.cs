@@ -21,6 +21,14 @@ namespace BrawlbotsMVC.Models
         public int win_count { get; set; }
         public int loss_count { get; set; }
 
+        public string name { get; set; }
+        public string Weapon { get; set; }
+        public string type_of_movement { get; set; }
+
+        public string weight_class { get; set; }
+
+        public string team_name { get; set; }
+
 
 
 
@@ -170,7 +178,7 @@ namespace BrawlbotsMVC.Models
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                string sqlQuery = "SELECT `id`,`arena_name`,`match_date`,`winner_id`,`loser_id` FROM matches WHERE  Deleted  =  0";
+                string sqlQuery = "SELECT `id`,`name`,`weapon`,`type_of_movement`,`weight_class`,`team_name`,`win_count`,`loss_count` FROM robots WHERE  Deleted  =  0";
                 MySqlCommand command = new MySqlCommand(sqlQuery, connection);
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
@@ -180,10 +188,13 @@ namespace BrawlbotsMVC.Models
                     {
                         WedstrijdenData wedstrijden = new WedstrijdenData();
                         wedstrijden.id = reader.GetInt32(0);
-                        wedstrijden.arena_name = reader.GetString(1);
-                        wedstrijden.match_date = reader.GetDateTime(2);
-                        wedstrijden.winner_id = reader.GetInt32(3);
-                        wedstrijden.loser_id = reader.GetInt32(4);
+                        wedstrijden.name = reader.GetString(1);
+                        wedstrijden.Weapon = reader.GetString(2);
+                        wedstrijden.type_of_movement = reader.GetString(3);
+                        wedstrijden.weight_class = reader.GetString(4);
+                        wedstrijden.team_name = reader.GetString(5);
+                        wedstrijden.win_count = reader.GetInt32(6);
+                        wedstrijden.loss_count = reader.GetInt32(7);
                         returnList.Add(wedstrijden);
                     }
                     reader.Close();

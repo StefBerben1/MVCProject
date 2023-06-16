@@ -1,0 +1,88 @@
+﻿@model BrawlbotsMVC.Models.WedstrijdenData
+
+@{
+    ViewData["Title"] = "editMatch";
+}
+
+<h1>editMatch</h1>
+
+<h4>WedstrijdenData</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="editMatch">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="arena_name" class="control-label"></label>
+                <input asp-for="arena_name" class="form-control" />
+                <span asp-validation-for="arena_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="match_date" class="control-label"></label>
+                <input asp-for="match_date" class="form-control" />
+                <span asp-validation-for="match_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="winner_id" class="control-label"></label>
+                <input asp-for="winner_id" class="form-control" />
+                <span asp-validation-for="winner_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="loser_id" class="control-label"></label>
+                <input asp-for="loser_id" class="form-control" />
+                <span asp-validation-for="loser_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="win_count" class="control-label"></label>
+                <input asp-for="win_count" class="form-control" />
+                <span asp-validation-for="win_count" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="loss_count" class="control-label"></label>
+                <input asp-for="loss_count" class="form-control" />
+                <span asp-validation-for="loss_count" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weapon" class="control-label"></label>
+                <input asp-for="Weapon" class="form-control" />
+                <span asp-validation-for="Weapon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="type_of_movement" class="control-label"></label>
+                <input asp-for="type_of_movement" class="form-control" />
+                <span asp-validation-for="type_of_movement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="weight_class" class="control-label"></label>
+                <input asp-for="weight_class" class="form-control" />
+                <span asp-validation-for="weight_class" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="team_name" class="control-label"></label>
+                <input asp-for="team_name" class="form-control" />
+                <span asp-validation-for="team_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

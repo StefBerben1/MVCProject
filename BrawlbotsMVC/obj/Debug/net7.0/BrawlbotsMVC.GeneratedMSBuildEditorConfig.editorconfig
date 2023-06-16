@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2Vkc3RyaWpkZW5cQ3JlYXRlV2Vkc3RyaWpkRm9ybS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/laragon/www/BrawlbotsMVC/MVCProject/BrawlbotsMVC/Views/Wedstrijden/editMatch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2Vkc3RyaWpkZW5cZWRpdE1hdGNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/laragon/www/BrawlbotsMVC/MVCProject/BrawlbotsMVC/Views/Wedstrijden/FetchLeaderbord.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2Vkc3RyaWpkZW5cRmV0Y2hMZWFkZXJib3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
